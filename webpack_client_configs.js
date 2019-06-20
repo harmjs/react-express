@@ -3,10 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   common: {
-    entry: [
-      'babel-polyfill',
-      path.resolve(__dirname, 'src', 'client', 'index.js')
-    ],
+    entry: path.resolve(__dirname, 'src', 'client', 'index.js'),
     output: {
       path: path.join(__dirname, 'dist', 'static'),
       filename: 'bundle.js'
@@ -20,7 +17,8 @@ module.exports = {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-react']
+              presets: ['@babel/preset-env', '@babel/preset-react'],
+              plugins: ["@babel/plugin-transform-runtime"]
             }
           }
         },
