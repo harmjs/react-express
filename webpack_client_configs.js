@@ -18,7 +18,7 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env', '@babel/preset-react'],
-              plugins: ["@babel/plugin-transform-runtime"]
+              plugins: ['@babel/plugin-transform-runtime']
             }
           }
         },
@@ -32,11 +32,15 @@ module.exports = {
     plugins: [
       new HtmlWebpackPlugin({
         template: path.join(__dirname, 'src', 'client', 'index.html'),
+        favicon: path.join(__dirname, 'src', 'client', 'favicon.ico')
       })
     ]
   },
   development: {
     mode: 'development',
     devtool: 'inline-source-map'
+  },
+  production: {
+    mode: 'production'
   }
 }

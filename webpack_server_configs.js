@@ -24,17 +24,20 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
-              plugins: ["@babel/plugin-transform-runtime"]
+              plugins: ['@babel/plugin-transform-runtime']
             }
           }
         }
       ]
     },
-    plugins: [
-      new DotenvWebpackPlugin()
-    ]
   },
   development: {
+    plugins: [
+      new DotenvWebpackPlugin()
+    ],
     mode: 'development',
+  },
+  production: {
+    mode: 'production'
   }
 }

@@ -4,16 +4,17 @@
   "description": "simple started project for creating react/express apps",
   "main": "dist/app",
   "scripts": {
-    "serve": "nodemon dist/app",
-    "build": "webpack --watch",
-    "start": "webpack --watch"
+    "start": "node dist/app",
+    "start-dev": "nodemon dist/app",
+    "build": "webpack",
+    "build-dev": "webpack --watch"
   },
   "keywords": [
     "boilerplate",
     "express",
     "react",
     "node",
-    "weppack"
+    "webpack"
   ],
   "author": "Jacob Sloots",
   "license": "ISC",
