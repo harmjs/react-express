@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   common: {
@@ -10,8 +11,7 @@ module.exports = {
     },
     target: 'web',
     module: {
-      rules: [
-        {
+      rules: [{
           test: /\.(js|jsx)$/,
           exclude: /node_modules/, 
           use: {
@@ -22,25 +22,29 @@ module.exports = {
             }
           }
         },
-        { 
-          test: /\.scss$/, 
-          exclude: /node_modules/, 
-          use: ['style-loader', 'css-loader', 'sass-loader']
-        }
-      ]
+        {
+          test: /\.css$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader'
+          ]
+        }]
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: path.join(__dirname, 'src', 'client', 'index.html'),
         favicon: path.join(__dirname, 'src', 'client', 'favicon.ico')
+      }),
+      new MiniCssExtractPlugin({
+        filename: 'style.css',
       })
     ]
   },
   development: {
     mode: 'development',
-    devtool: 'inline-source-map'
+    devtool: 'inline-source-map',
   },
   production: {
-    mode: 'production'
+    mode: 'production',
   }
 }
